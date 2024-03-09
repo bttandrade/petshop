@@ -7,24 +7,35 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <main id="container-contact">
-        <section id="nome">
-            <h4>Digite seu nome</h4>
-            <input class="" type="text">
-        </section>
-        <section id="email">
-            <h4>Digite seu email</h4>
-            <input type="email">
-        </section>
-        <ul id="choose">
-            <h4>Escolha serviço e/ou produto</h4>
-
-        </ul>
-        <section id="question">
-            <h4>Alguma dúvida ?</h4>
-            <input type="text-box">
-        </section>
-        <button id="submit">Agendar</button>
-    </main>
+    <form id="form">
+        <fieldset id="main-input">
+            <label class="title" id="name-label">Digite seu nome: </label><input id="name-input" name="name" type="text" placeholder=" Nome" required>
+            <label class="title" id="email-label">Digite seu email: </label><input id="email-input" name="email" type="email" placeholder=" Email" required>
+        </fieldset>
+        <fieldset id="drop-box">
+            <label for="dropdown" class="title">Qual o tipo do seu pet?</label>
+            <select id="dropdown" name="dropdown">
+                <option value="">(Opções)</option>
+                <option value="1">Cachorro</option>
+                <option value="2">Gato</option>
+                <option value="3">Coelho</option>
+                <option value="4">Hamster</option>
+                <option value="5">Outro</option>
+            </select>
+        </fieldset>
+        <fieldset id="check-box" clas>
+            <label class="title" id="">O que você está procurando?</label>
+            <label id="service-check"><input type="radio" id="junior" name="radio" class="inline" value="junior">Serviço</label>
+            <label id="product-check"><input type="radio" id="pleno" name="radio" class="inline" value="pleno">Produto</label>
+        </fieldset>
+        <fieldset id="txt-box">
+            <label class="title" for="textarea">Tem alguma dúvida?</label>
+            <textarea name="textarea" id="textarea" cols="50" rows="4" placeholder=" Deixe sua dúvida"></textarea>
+        </fieldset>
+        <fieldset>
+            <input type="submit" id="submit" />
+            <button id="back-button"><a id="back" href="./index.html">Voltar</a></button>
+        </fieldset>
+    </form>
 </body>
 </html>
