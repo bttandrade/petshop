@@ -1,0 +1,115 @@
+:root {
+    --text-color: #654a3b;
+    --background-color: #fcf3e3;
+    --bar-color: #e6c99c;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    background-color: var(--background-color);
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+.title {
+    background-color: var(--bar-color);
+    color: var(--text-color);
+    font-size: 1.4em;
+    letter-spacing: 1px;
+    text-align: center;
+    margin: 20px;
+    height: 30px;
+    border-radius: 10px;
+}
+
+#form {
+    height: 100vh;
+    width: 600px;
+    border: 2px solid var(--text-color);
+    background-color: #eedfc6;
+    border-radius: 10px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#main-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    width: 95%;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+}
+
+#name-input, #email-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--text-color);
+    height: 30px;
+    width: 300px;
+}
+
+#drop-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#check-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#txt-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#textarea {
+    border: 1px solid var(--text-color);
+}
+
+#submit, #back-button {
+    margin-left: 30px;
+    text-decoration: none;
+    color: var(--text-color);
+    width: 100px;
+    height: 30px;
+    border: 1px solid var(--text-color);
+    background-color: var(--bar-color);
+}
+
+#contact-btns {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+#back {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+#submit:hover, #back-button:hover,#back:hover {
+    background-color: var(--text-color);
+    color: var(--background-color);
+}
