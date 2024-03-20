@@ -4,30 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PET SHOP</title>
-    <link rel="stylesheet" href="./petshop/style.css">
+    <link rel="stylesheet" href="./petshop/styles/style-index.css">
 </head>
 <body>
     <nav id="nav-bar">
-        <a href="index.html"><img id="logo" src="./petshop/images/logo-preview.png" alt="logo"></a>
-        <a class="nav-links" href="#intro">Home</a>
-        <a class="nav-links" href="#about-us">Sobre</a>
-        <a class="nav-links" href="#products">Produtos</a>
-        <a class="nav-links" href="#services">Serviços</a>
-        <a class="nav-links" href="./petshop/contato.html">Contato</a>
+        <nav id="nav-up">
+            <a href="index.html"><img id="logo" src="./petshop/images/logo-preview.png" alt="logo"></a>
+            <div id="box-txt"><img src="./petshop/images/search.png" class="icons" alt="search"><h5 class="txt">O que seu pet precisa?</h5></div>
+            <div id="box-pedido" class="nav-up-btn"><img src="./petshop/images/cart.png" class="icons" alt="cart"><h5 class="txt">Carrinho</h5></div>
+            <div id="box-cadastro" class="nav-up-btn"> <img src="./petshop/images/user.png" class="icons" alt="user"><h5 class="txt">Login</h5></div>
+            <div id="box-login" class="nav-up-btn"><img src="./petshop/images/user.png" class="icons" alt="user"><h5 class="txt">Cadastro</h5></div>
+        </nav>
+        <nav id="nav-down">
+            <a class="nav-links" href="#intro">Home</a>
+            <a class="nav-links" href="#about-us">Sobre</a>
+            <a class="nav-links" href="./petshop/pages/products.html">Produtos</a>
+            <a class="nav-links" href="./petshop/pages/services.html">Serviços</a>
+            <a class="nav-links" href="./petshop/pages/contact.html">Contato</a>
+        </nav>
     </nav>
     <main id="main">
-        <section id="intro">
-            <div id="intro-text-box">
-                <h4 id="intro-text">Bem-vindo ao Petshop, aqui você pode encontrar tudo o que precisa para fornecer uma alta qualidade de vida ao seu pet</h4>
-            </div>
-            <div id="passing">
-                <button id="left" class="btns"><</button>
-                <img id="img" src="https://www.mtall.com.br/wp-content/uploads/2016/08/petshop-1000x500.jpg" alt="cao 1">
-                <button id="right" class="btns">></button>
-            </div>
-        </section>
+        <ul class="slider">
+            <li>
+                  <input type="radio" id="slide1" name="slide" checked>
+                  <label for="slide1"></label>
+                  <img src="./petshop/images/pic1.jpg" />
+            </li>
+            <li>
+                  <input type="radio" id="slide2" name="slide">
+                  <label for="slide2"></label>
+                  <img src="./petshop/images/pic2.jpg" />
+            </li>
+            <li>
+                  <input type="radio" id="slide3" name="slide">
+                  <label for="slide3"></label>
+                  <img src="./petshop/images/pic3.jpg" />
+            </li>
+        </ul>
+        <div class="title">Sobre nosso Pet Shop</div>
         <section id="about-us">
-            <ul><div class="title">Algumas informações sobre nosso Pet Shop</div>
+            <ul id="about-us-box">
                 <li>Nosso PetShop foi criado em 1996.</li>
                 <li>Nossa missão é trazer os melhores produtos e serviços para nossos clientes.</li>
                 <li>Temos 27 anos de muita dedicação e prazer no que fazemos.</li>
@@ -35,53 +51,11 @@
                 <li>Garantimos a satisfação do cliente e o conforto de seu pet.</li>
             </ul>
         </section>
-        <div class="title">Nossos produtos</div>
-        <section id="products">
-            <div class="cards">
-                <img src="https://www.petparapets.com.br/uploads/produtos/487/3beb17d538b3b8b9720a0ee0c79ba227.JPEG" alt="produto"><h5 id="descript">Caixinha de Ração A<br>R$ 99,00</h5>
-            </div>
-            <div class="cards">
-                <img src="https://m.media-amazon.com/images/I/61bevzr6I+L._AC_SY300_SX300_.jpg" alt="produto"><h5 id="descript">Caixa para Transporte<br>R$ 99,00</h5>
-            </div>
-            <div class="cards">
-                <img src="https://m.media-amazon.com/images/I/31qKsAMpN7L._AC_.jpg" alt="produto"><h5 id="descript">Mochila para Transporte<br>R$ 99,00</h5>
-            </div>
-            <div class="cards">
-                <img src="https://www.zeedog.com.br/live/invoke/website/loaders/image.ts?src=https%3A%2F%2Fzeedog.vteximg.com.br%2Farquivos%2Fcama-para-cachorros-zeebed-skull-zeedog-cachorro-pet-main-01.jpg&fit=cover&width=840&height=840" alt="produto"><h5 id="descript">Cama para Pets<br>R$ 99,00</h5>
-            </div>
-            <div class="cards">
-                <img src="https://m.media-amazon.com/images/I/61TjIY2Wv0L.__AC_SX300_SY300_QL70_ML2_.jpg" alt="produto"><h5 id="descript">Porta Ração<br>R$ 99,00</h5>
-            </div>
-            <div class="cards">
-                <img src="https://m.media-amazon.com/images/I/51v7zwOodHL.__AC_SY300_SX300_QL70_ML2_.jpg" alt="produto"><h5 id="descript">Caixinha de Ração<br>R$ 99,00</h5>
-            </div>
-        </section>
-        <div class="title">Nossos serviços</div>
-        <section id="services">
-            <div class="cards">
-                <img src="https://www.petz.com.br/blog//wp-content/uploads/2021/06/banho-em-pet-shop3.jpg" alt="produto"><h5 id="descript">Penteamento<br>R$ 119,00</h5>
-            </div>
-            <div class="cards">
-                <img src="https://blog.vhsys.com.br/wp-content/uploads/2023/04/pacote-banho-e-tosa.png" alt="produto"><h5 id="descript">Tosa<br>R$ 119,00</h5>
-            </div>
-            <div class="cards">
-                <img src="https://www.prontovetbauru.com.br/wp-content/uploads/2017/06/pet-shop-banho-tosa-bauru.jpg" alt="produto"><h5 id="descript">Banho<br>R$ 119,00</h5>
-            </div>
-            <div class="cards">
-                <img src="https://r1web.com.br/univetus/wp-content/uploads/2018/10/vacina-para-animais.jpg" alt="produto"><h5 id="descript">Vacinamento<br>R$ 119,00</h5>
-            </div>
-            <div class="cards">
-                <img src="https://fisioanimal.com/blog/wp-content/uploads/2019/01/MG_0790-1024x683.jpg" alt="produto"><h5 id="descript">Massagem<br>R$ 119,00</h5>
-            </div>
-            <div class="cards">
-                <img src="https://www.estimacaopetshop.com.br/clinicas-veterinarias/imagens/banho-e-tosa-de-animais.jpg" alt="produto"><h5 id="descript">Tratamento<br>R$ 119,00</h5>
-            </div>
-        </section>
-        <div class="title">Alguns comentários sobre nós</div>
+        <div class="title">Comentários sobre nós</div>
         <section id="comments">
-            <div class="comments-box">Anônimo:<br>Ótimos produtos e todos com um bom preço.</div>
-            <div class="comments-box">Anônimo:<br>Adorei o atendimento, voltarei la sempre.</div>
-            <div class="comments-box">Anônimo:<br>Gostei muito dos serviços, meu pet foi muito bem tratado.</div>
+            <div class="comments-box">Pedro:<br>Ótimos produtos e todos com um bom preço, fiquei muito satisfeito.</div>
+            <div class="comments-box">Ana:<br>Adorei o atendimento, voltarei la sempre e recomendaria a todos.</div>
+            <div class="comments-box">Tiago:<br>Gostei muito dos serviços, meu pet foi muito bem tratado.</div>
         </section>
     </main>
     <footer id="footer">
@@ -92,5 +66,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
-<!-- home, sobre, servicos, produtos, contato -->

@@ -9,6 +9,7 @@
     margin: 0;
     padding: 0;
     border: 0;
+    user-select: none;
 }
 
 body {
@@ -30,7 +31,6 @@ body {
 }
 
 #form {
-    height: 100vh;
     width: 600px;
     border: 2px solid var(--text-color);
     background-color: #eedfc6;
