@@ -1,6 +1,6 @@
 :root {
     --text-color: #654a3b;
-    --background-color: #fcf3e3;
+    --background-color: #fff;
     --bar-color: #e6c99c;
 }
 
@@ -18,15 +18,19 @@ body {
 
 #main {
     width: 100vw;
+    height: 100vh;
+    border: 1px solid;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
 }
 
-#shopping-cart-box {
+#shopp-box {
+    border: 1px solid;
+    width: 100%;
+    height: 100%;
     display: flex;
-    width: 80%;
 }
 
 .title {
@@ -37,45 +41,93 @@ body {
     text-align: center;
     margin: 20px;
     height: 30px;
-    border-radius: 10px;
+    border-radius: 5px;
     width: 90%;
-    border: 1px solid var(--text-color);
 }
 
-#products {
+#shopping-cart-box {
     border: 1px solid;
-    width: 60%;
-    display: grid;
-    padding: 40px;
-    grid-template-columns: auto;
-    gap: 50px;
-}
-
-.cards {
-    border: 1px solid var(--text-color);
-    background-color: var(--bar-color);
-    border-radius: 10px;
-    padding: 10px;
-    height: 320px;
-    width: 400px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    gap: 15px;
+    width: 60%;
+    height: 90%;
 }
 
-.cards img {
+.product {
+    display: flex;
+    align-items: center;
+    height: 300px;
+    width: 500px;
+    margin: 50px;
+    border: 1px solid;
+}
+
+.img-box {
+    margin-left: 20px;
+    border: 1px solid;
+    height: 280px;
+    width: 230px;
+}
+
+.img-box img {
     border-radius: 10px;
     height: 280px;
     width: 230px;
-    margin-bottom: 10px;
-    object-fit: cover;
+}
+
+.product-descript {
+    border: 1px solid;
+    display: flex;
+    flex-direction: column;
+    width: 230px;
+    height: 280px;
+    justify-content: center;
+}
+
+.prod-name, .quantidade {
+    text-align: center;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+.prod-price {
+    text-align: center;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+.prod-add-remove {
+    height: 50px;
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.prod-add, .prod-remove {
+    border: 3px double;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+}
+
+#shopp-left {
+    border: 1px solid;
+}
+
+#princing {
+    border: 1px solid;
+    height: 100%;
+    width: 100%;
 }
 
 #finalize-shop {
     border: 1px solid;
     width: 40%;
+    height: 30%;
     display: flex;
     justify-content: center;
     align-items: center;

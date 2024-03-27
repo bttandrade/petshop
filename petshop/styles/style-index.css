@@ -1,6 +1,6 @@
 :root {
     --text-color: #654a3b;
-    --background-color: #fcf3e3;
+    --background-color: #faf6ef;
     --bar-color: #e6c99c;
 }
 
@@ -34,6 +34,11 @@ body {
     background-color: var(--background-color);
 }
 
+.links {
+    text-decoration: none;
+    color: black;
+}
+
 .icons {
     height: 25px;
     width: 25px;
@@ -44,6 +49,7 @@ body {
 }
 
 #box-pedido, #box-cadastro, #box-login {
+    cursor: pointer;
     display: flex;
     align-items: center;
     width: 100px;
@@ -169,62 +175,28 @@ li {
     align-items: center;
 }
 
-
-.slider {
-    margin-top: 140px;
-    margin-bottom: 40px;
+#pics {
+    margin: 150px 0 30px 0;
+    display: flex;
+    justify-content: space-around;
+    width: 100vw;
     height: 400px;
-    width: 600px;
 }
 
-.slider li {
-    list-style: none;
-    position: absolute;
-    margin: 0;
+.promo {
+    width: auto;
+    max-width: 30%;
+    height: auto;
+    max-height: 100%;
 }
 
-.slider img {
-    border-radius: 10px;
+.promo-img {
+    filter: grayscale(.4);
     height: 400px;
-    width: 550px;
+    width: 400px;
 }
 
-.slider input {
-    display: none;
-}
-
-.slider label {
-    background-color: #000;
-    bottom: 10px;
+.promo-img:hover {
+    filter: grayscale(0);
     cursor: pointer;
-    display: block;
-    height: 10px;
-    position: absolute;
-    width: 10px;
-    z-index: 10;
-}
-
-.slider li:nth-child(1) label {
-    bottom: -20px;
-    left: 230px;
-}
-
-.slider li:nth-child(2) label {
-    bottom: -20px;
-    left: 310px;
-}
-
-.slider li:nth-child(3) label {
-    bottom: -20px;
-    left: 390px;
-}
-
-.slider img {
-    opacity: 0;
-    visibility: hidden;
-}
-
-.slider li input:checked ~ img {
-    opacity: 1;
-    visibility: visible;
 }

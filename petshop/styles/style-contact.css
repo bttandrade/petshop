@@ -1,6 +1,6 @@
 :root {
     --text-color: #654a3b;
-    --background-color: #fcf3e3;
+    --background-color: #faf6ef;
     --bar-color: #e6c99c;
 }
 
@@ -89,6 +89,11 @@ body {
 }
 
 #submit, #back-button {
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-left: 30px;
     text-decoration: none;
     color: var(--text-color);
@@ -104,12 +109,7 @@ body {
     margin: 20px;
 }
 
-#back {
-    text-decoration: none;
-    color: var(--text-color);
-}
-
-#submit:hover, #back-button:hover,#back:hover {
+#submit:hover, #back-button:hover {
     background-color: var(--text-color);
     color: var(--background-color);
 }

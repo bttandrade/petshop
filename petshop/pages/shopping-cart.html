@@ -9,25 +9,38 @@
 <body>
     <main id="main">
         <div class="title">Carrinho de Compras</div>
-        <section id="shopping-cart-box">
-            <section id="products">
-                <div class="cards">
-                    <img src="https://www.petparapets.com.br/uploads/produtos/487/3beb17d538b3b8b9720a0ee0c79ba227.JPEG" alt="produto">
-                    <h3 id="descript">Caixinha de Ração A<br>R$ 99,00</h5>
-                </div>
-                <div class="cards">
-                    <img src="https://m.media-amazon.com/images/I/61bevzr6I+L._AC_SY300_SX300_.jpg" alt="produto">
-                    <h3 id="descript">Caixa para Transporte<br>R$ 99,00</h5>
+        <section id="shopp-box">
+            <section id="shopping-cart-box">
+                <div class="product">
+                    <div class="img-box">
+                        <img src="https://www.petparapets.com.br/uploads/produtos/487/3beb17d538b3b8b9720a0ee0c79ba227.JPEG" alt="produto">
+                    </div>
+                    <div class="product-descript">
+                        <div class="prod-name">Caixinha de Ração A</div>
+                        <div class="prod-price">Valor unitario: R$ 99,00</div>
+                        <div class="quantidade">Quantidade: 1</div>
+                        <div class="prod-add-remove">
+                            <div class="prod-add">+</div>
+                            <div class="prod-remove">-</div>
+                        </div>
+                    </div>
                 </div>
             </section>
-            <section id="finalize-shop">
-                <h1>Consulta de CEP</h1>
-                <label for="cepInput">Digite o CEP:</label>
-                <input type="text" id="cepInput">
-                <button onclick="buscarEndereco()">Buscar</button>
-                <div id="endereco"></div>
-                <button class="buy">Finalizar Compra</button>
-                <button class="buy">Continuar Comprando</button>
+            <section id="shopp-left">
+                <section id="pricing">
+                    <h3>Resumo do total</h3>
+                    <h3>Total do pedido:</h3>
+                    <h3>Desconto:</h3>
+                </section>
+                <section id="finalize-shop">
+                    <h1>Consulta de CEP</h1>
+                    <label for="cepInput">Digite o CEP:</label>
+                    <input type="text" id="cepInput">
+                    <button onclick="buscarEndereco()">Buscar</button>
+                    <div id="endereco"></div>
+                    <button class="buy">Finalizar Compra</button>
+                    <button class="buy">Continuar Comprando</button>
+                </section>
             </section>
         </section>
     </main>
