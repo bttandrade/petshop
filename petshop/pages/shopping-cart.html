@@ -10,41 +10,73 @@
     <main id="main">
         <div class="title">Carrinho de Compras</div>
         <section id="shopp-box">
-            <section id="shopping-cart-box">
-                <div class="product">
-                    <div class="img-box">
-                        <img src="https://www.petparapets.com.br/uploads/produtos/487/3beb17d538b3b8b9720a0ee0c79ba227.JPEG" alt="produto">
-                    </div>
-                    <div class="product-descript">
-                        <div class="prod-name">Caixinha de Ração A</div>
-                        <div class="prod-price">Valor unitario: R$ 99,00</div>
-                        <div class="quantidade">Quantidade: 1</div>
-                        <div class="prod-add-remove">
-                            <div class="prod-add">+</div>
-                            <div class="prod-remove">-</div>
-                        </div>
-                    </div>
-                </div>
+            <section id="cart">
+                
             </section>
             <section id="shopp-left">
                 <section id="pricing">
-                    <h3>Resumo do total</h3>
-                    <h3>Total do pedido:</h3>
-                    <h3>Desconto:</h3>
+                    <h3 id="resume">Resumo do Pedido</h3>
+                    <div id="resume-values">
+                        <h3>Valor:</h3>
+                        <h3>Desconto:</h3>
+                        <h3>Valor finalizado:</h3>
+                    </div>
+                    <div id="resume-btns">
+                        <button class="buy">Finalizar Compra</button>
+                        <button class="buy">Continuar Comprando</button>
+                    </div>
                 </section>
-                <section id="finalize-shop">
-                    <h1>Consulta de CEP</h1>
+                <section id="cep-shop">
                     <label for="cepInput">Digite o CEP:</label>
-                    <input type="text" id="cepInput">
-                    <button onclick="buscarEndereco()">Buscar</button>
-                    <div id="endereco"></div>
-                    <button class="buy">Finalizar Compra</button>
-                    <button class="buy">Continuar Comprando</button>
+                    <div id="cep-inputs">
+                        <input type="text" id="cepInput">
+                        <button onclick="buscarEndereco()">Buscar</button>
+                        <div id="endereco"></div>
+                    </div>
                 </section>
             </section>
         </section>
     </main>
 
+    <script>
+        // Função para exibir os itens do carrinho na página do carrinho
+        function displayCart() {
+          const cart = JSON.parse(localStorage.getItem('cart'));
+          const cartList = document.getElementById('cart');
+        
+          // Limpa o conteúdo atual do carrinho
+          cartList.innerHTML = '';
+        
+          // Verifica se há itens no carrinho
+          if (cart && cart.length > 0) {
+            // Loop através de cada item do carrinho e adiciona à lista
+            cart.forEach(item => {
+              const cartItem = document.createElement('li');
+        
+              const itemImage = document.createElement('img');
+              itemImage.src = item.image;
+              itemImage.alt = item.name;
+              cartItem.appendChild(itemImage);
+        
+              const itemName = document.createElement('p');
+              itemName.textContent = item.name;
+              cartItem.appendChild(itemName);
+        
+              const itemPrice = document.createElement('p');
+              itemPrice.textContent = item.price;
+              cartItem.appendChild(itemPrice);
+        
+              cartList.appendChild(cartItem);
+            });
+          } else {
+            // Se o carrinho estiver vazio, exibe uma mensagem
+            cartList.innerHTML = '<p>Carrinho vazio</p>';
+          }
+        }
+        
+        // Chama a função para exibir os itens do carrinho ao carregar a página
+        window.onload = displayCart;
+    </script>
     <script>
         function buscarEndereco() {
             var cep = document.getElementById('cepInput').value;

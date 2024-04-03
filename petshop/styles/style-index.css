@@ -1,7 +1,8 @@
 :root {
     --text-color: #654a3b;
-    --background-color: #faf6ef;
+    --background-color: #f5ecde;
     --bar-color: #e6c99c;
+    --background: #fff;
 }
 
 * {
@@ -18,7 +19,7 @@
 }
 
 body {
-    background-color: var(--background-color);
+    background-color: var(--background);
 }
 
 #nav-bar {
@@ -129,17 +130,23 @@ body {
 
 #about-us {
     color: var(--text-color);
-    padding: 100px;
+    padding: 30px;
+    width: 80vw;
 }
 
 #about-us-box {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
 li {
+    border: 1px solid;
+    border-radius: 10px;
+    box-shadow: 2px 2px var(--text-color);
     text-align: center;
+    height: fit-content;
     margin: 30px;
-    padding-left: 40px;
+    padding: 10px;
     list-style: none;
     font-size: 1.4em;
 }
@@ -192,6 +199,7 @@ li {
 
 .promo-img {
     filter: grayscale(.4);
+    border-radius: 10px;
     height: 400px;
     width: 400px;
 }

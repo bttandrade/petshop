@@ -1,6 +1,6 @@
 :root {
     --text-color: #654a3b;
-    --background-color: #faf6ef;
+    --background-color: #fff;
     --bar-color: #e6c99c;
 }
 
@@ -59,8 +59,8 @@ body {
     box-shadow: 2px 2px var(--text-color);
     border-radius: 10px;
     padding: 10px;
-    height: 400px;
-    width: 250px;
+    height: 420px;
+    width: 280px;
     text-align: center;
     margin: 20px 40px;
 }
@@ -73,6 +73,14 @@ body {
     object-fit: cover;
 }
 
+.name-product {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.price-product {
+    font-size: 1.4em;
+}
 
 .btn-buy, #go-back {
     background-color: var(--text-color);
