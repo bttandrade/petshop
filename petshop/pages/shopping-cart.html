@@ -17,7 +17,7 @@
                 <section id="pricing">
                     <h3 id="resume">Resumo do Pedido</h3>
                     <div id="resume-values">
-                        <h3>Valor:</h3>
+                        <h3>Valor: <div id="total-value">0</div></h3>
                         <h3>Desconto:</h3>
                         <h3>Valor finalizado:</h3>
                     </div>
@@ -39,42 +39,107 @@
     </main>
 
     <script>
-        // Função para exibir os itens do carrinho na página do carrinho
+        const totalValue = document.getElementById('total-value');
+        let totalNumber = 0;
+
         function displayCart() {
-          const cart = JSON.parse(localStorage.getItem('cart'));
-          const cartList = document.getElementById('cart');
-        
-          // Limpa o conteúdo atual do carrinho
-          cartList.innerHTML = '';
-        
-          // Verifica se há itens no carrinho
-          if (cart && cart.length > 0) {
-            // Loop através de cada item do carrinho e adiciona à lista
-            cart.forEach(item => {
-              const cartItem = document.createElement('li');
-        
-              const itemImage = document.createElement('img');
-              itemImage.src = item.image;
-              itemImage.alt = item.name;
-              cartItem.appendChild(itemImage);
-        
-              const itemName = document.createElement('p');
-              itemName.textContent = item.name;
-              cartItem.appendChild(itemName);
-        
-              const itemPrice = document.createElement('p');
-              itemPrice.textContent = item.price;
-              cartItem.appendChild(itemPrice);
-        
-              cartList.appendChild(cartItem);
-            });
-          } else {
-            // Se o carrinho estiver vazio, exibe uma mensagem
-            cartList.innerHTML = '<p>Carrinho vazio</p>';
-          }
+            const cart = JSON.parse(localStorage.getItem('cart'));
+            const cartList = document.getElementById('cart');
+            totalNumber = 0;
+
+            cartList.innerHTML = '';
+
+            function removeItem(itemId) {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                const index = cart.findIndex(item => item.id === itemId);
+                if (index !== -1) {
+                cart.splice(index, 1);
+
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                displayCart();
+                }
+            }
+
+            if (cart && cart.length > 0) {
+                cart.forEach(item => {
+                    
+                const cartItem = document.createElement('li');
+                cartItem.classList.add('product');
+
+                const itemImgBox = document.createElement('div');
+                itemImgBox.classList.add('img-box');
+                cartItem.appendChild(itemImgBox);
+
+                const itemImage = document.createElement('img');
+                itemImage.src = item.image;
+                itemImage.alt = item.name;
+                itemImgBox.appendChild(itemImage);
+
+                const cartDescript = document.createElement('div');
+                cartDescript.classList.add('product-descript');
+                cartItem.appendChild(cartDescript);
+
+                const itemName = document.createElement('p');
+                itemName.classList.add('prod-name');
+                itemName.textContent = item.name;
+                cartDescript.appendChild(itemName);
+
+                const itemPrice = document.createElement('p');
+                itemPrice.classList.add('prod-price');
+                itemPrice.innerHTML = item.price;
+                cartDescript.appendChild(itemPrice);
+
+                const addOrRemove = document.createElement('div');
+                addOrRemove.classList.add('prod-add-remove');
+                cartDescript.appendChild(addOrRemove);
+
+                const quantTxt = document.createElement('h4');
+                quantTxt.classList.add('quantidade');
+                quantTxt.innerHTML = `Unidades: ${item.quant}`;
+
+                totalNumber += parseFloat(itemPrice.innerHTML) * item.quant;
+                totalValue.innerHTML = totalNumber;
+
+                const addItem = document.createElement('div');
+                addItem.textContent = '+';
+                addItem.addEventListener("click", () => {
+                    item.quant++;
+                    totalNumber += parseFloat(itemPrice.innerHTML);
+                    totalValue.innerHTML = totalNumber;
+                    quantTxt.innerHTML = `Unidades: ${item.quant}`;
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                });
+                addItem.classList.add('prod-add');
+
+                const removeItemButton = document.createElement('div');
+                removeItemButton.textContent = '-';
+                removeItemButton.addEventListener("click", () => {
+                    item.quant--;
+                    totalNumber -= parseFloat(itemPrice.innerHTML);
+                    totalValue.innerHTML = totalNumber;
+                    quantTxt.innerHTML = `Unidades: ${item.quant}`;
+                    if (item.quant === 0) {
+                    removeItem(item.id);
+                    } else {
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    }
+                });
+                removeItemButton.classList.add('prod-remove');
+
+                addOrRemove.appendChild(addItem);
+                addOrRemove.appendChild(removeItemButton);
+
+                cartDescript.appendChild(quantTxt);
+
+                cartList.appendChild(cartItem);
+                });
+            } else {
+                cartList.innerHTML = '<p id="empty-cart">Carrinho vazio</p>';
+            }
         }
         
-        // Chama a função para exibir os itens do carrinho ao carregar a página
         window.onload = displayCart;
     </script>
     <script>
