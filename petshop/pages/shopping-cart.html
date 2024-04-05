@@ -22,8 +22,8 @@
                         <h3>Valor finalizado:</h3>
                     </div>
                     <div id="resume-btns">
-                        <button class="buy">Finalizar Compra</button>
-                        <button class="buy">Continuar Comprando</button>
+                        <button id="finish">Finalizar Compra</button>
+                        <button id="continue-buy">Continuar Comprando</button>
                     </div>
                 </section>
                 <section id="cep-shop">
@@ -41,6 +41,16 @@
     <script>
         const totalValue = document.getElementById('total-value');
         let totalNumber = 0;
+        
+        function removeItem(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            if (index !== -1) {
+                cart.splice(index, 1);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                displayCart();
+            }
+        }
 
         function displayCart() {
             const cart = JSON.parse(localStorage.getItem('cart'));
@@ -49,21 +59,8 @@
 
             cartList.innerHTML = '';
 
-            function removeItem(itemId) {
-                let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-                const index = cart.findIndex(item => item.id === itemId);
-                if (index !== -1) {
-                cart.splice(index, 1);
-
-                localStorage.setItem('cart', JSON.stringify(cart));
-
-                displayCart();
-                }
-            }
-
             if (cart && cart.length > 0) {
-                cart.forEach(item => {
+                cart.forEach((item, index) => {
                     
                 const cartItem = document.createElement('li');
                 cartItem.classList.add('product');
@@ -99,15 +96,15 @@
                 quantTxt.classList.add('quantidade');
                 quantTxt.innerHTML = `Unidades: ${item.quant}`;
 
-                totalNumber += parseFloat(itemPrice.innerHTML) * item.quant;
-                totalValue.innerHTML = totalNumber;
+                totalNumber += parseFloat(itemPrice.innerText) * item.quant;
+                totalValue.innerHTML = totalNumber.toFixed(2).toString();
 
                 const addItem = document.createElement('div');
                 addItem.textContent = '+';
                 addItem.addEventListener("click", () => {
                     item.quant++;
                     totalNumber += parseFloat(itemPrice.innerHTML);
-                    totalValue.innerHTML = totalNumber;
+                    totalValue.innerHTML = totalNumber.toFixed(2).toString();
                     quantTxt.innerHTML = `Unidades: ${item.quant}`;
                     localStorage.setItem('cart', JSON.stringify(cart));
                 });
@@ -118,12 +115,12 @@
                 removeItemButton.addEventListener("click", () => {
                     item.quant--;
                     totalNumber -= parseFloat(itemPrice.innerHTML);
-                    totalValue.innerHTML = totalNumber;
+                    totalValue.innerHTML = totalNumber.toFixed(2).toString();
                     quantTxt.innerHTML = `Unidades: ${item.quant}`;
                     if (item.quant === 0) {
-                    removeItem(item.id);
+                        removeItem(index);
                     } else {
-                    localStorage.setItem('cart', JSON.stringify(cart));
+                        localStorage.setItem('cart', JSON.stringify(cart));
                     }
                 });
                 removeItemButton.classList.add('prod-remove');
@@ -138,8 +135,7 @@
             } else {
                 cartList.innerHTML = '<p id="empty-cart">Carrinho vazio</p>';
             }
-        }
-        
+        }  
         window.onload = displayCart;
     </script>
     <script>
@@ -160,5 +156,6 @@
             .catch(error => console.error('Erro:', error));
         }
     </script>
+    <script src="../script/script.js"></script>
 </body>
 </html>
