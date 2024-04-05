@@ -2,6 +2,7 @@
     --text-color: #654a3b;
     --background-color: #fff;
     --bar-color: #e6c99c;
+    --back-color: #fcf3e5;
 }
 
 * {
@@ -10,6 +11,7 @@
     padding: 0;
     border: 0;
     user-select: none;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 body {
@@ -18,8 +20,7 @@ body {
 
 #main {
     width: 100vw;
-    height: 100vh;
-    border: 1px solid;
+    height: fit-content;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -27,7 +28,6 @@ body {
 }
 
 #shopp-box {
-    border: 1px solid;
     width: 100%;
     height: 100%;
     display: flex;
@@ -47,14 +47,18 @@ body {
 }
 
 #cart {
-    border: 1px solid;
     display: flex;
     flex-direction: column;
     width: 60%;
+    height: fit-content;
+    min-width: fit-content;
+    background-color: var(--back-color);
+    border-right: 4px solid var(--text-color);
+    border-radius: 8px 0 0 8px;
 }
 
 #empty-cart {
-    margin-top: 100px;
+    margin: 100px 0;
     width: 100%;
     font-size: 3em;
     text-align: center;
@@ -63,10 +67,12 @@ body {
 .product {
     display: flex;
     align-items: center;
-    height: 300px;
-    width: 500px;
+    height: 180px;
+    width: 80%;
     margin: 20px 50px;
-    border: 1px solid;
+    border: 1px solid var(--text-color);
+    border-radius: 10px;
+    background-color: #fff;
 }
 
 .img-box {
@@ -74,36 +80,35 @@ body {
     justify-content: center;
     align-items: center;
     margin-left: 20px;
-    height: 280px;
-    width: 230px;
+    height: 160px;
+    width: 180px;
 }
 
 .img-box img {
     border-radius: 10px;
-    height: 270px;
-    width: 220px;
-    border: 1px solid;
+    height: 160px;
+    width: 140px;
 }
 
 .product-descript {
     display: flex;
-    flex-direction: column;
-    width: 230px;
-    height: 280px;
-    justify-content: center;
+    width: 560px;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .prod-name {
     text-align: center;
-    margin-top: 30px;
+    margin-top: 5px;
     font-weight: bold;
+    width: 100px;
 }
 
 .prod-price {
     text-align: center;
-    margin-top: 30px;
     font-weight: bold;
 }
+
 
 .prod-add-remove {
     height: 50px;
@@ -114,13 +119,32 @@ body {
 }
 
 .prod-add, .prod-remove {
-    border: 3px double;
+    border: 2px solid;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
     height: 30px;
     width: 30px;
+    font-weight: bolder;
+}
+
+.prod-add:hover {
+    box-shadow: inset 0 0 5px 5px rgb(53, 131, 53);
+}
+
+.prod-add {
+    background-color: rgb(82, 194, 82);
+    box-shadow: inset 0 0 5px 5px rgb(69, 165, 69);
+}
+
+.prod-remove:hover {
+    box-shadow: inset 0 0 5px 5px rgb(163, 53, 53);
+}
+
+.prod-remove {
+    background-color: rgb(218, 66, 66);
+    box-shadow: inset 0 0 5px 5px rgb(197, 64, 64);
 }
 
 .quantidade {
@@ -128,17 +152,27 @@ body {
 }
 
 #shopp-left {
-    border: 1px solid;
     width: 40%;
+    min-width: fit-content;
+    height: fit-content;
+    background-color: var(--back-color);
+    border-radius: 0 8px 8px 0;
 }
 
 #pricing {
-    border: 1px solid;
     display: flex;
     flex-direction: column;
+    text-align: center;
     justify-content: space-evenly;
     align-items: center;
-    height: 50%;
+    height: fit-content;
+}
+
+#total-value {
+    display: flex;
+    text-decoration: line-through;
+    justify-content: center;
+    width: 100%;
 }
 
 #pricing #resume {
@@ -146,26 +180,40 @@ body {
     margin: 30px 0;
 }
 
-#pricing button {
-    height: 40px;
-    width: 150px;
-    margin: 20px;
+#resume-values {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-#cep-shop {
-    padding: 20px;
+#descount, #total-value-final {
+    color: rgb(53, 131, 53);
+    font-size: 1.3em;
+}
+
+#pricing button {
+    height: 30px;
+    width: 150px;
+    margin: 30px 20px;
     border: 1px solid;
-    height: 30%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+    border-radius: 5px;
+    background-color: var(--bar-color);
+}
+
+#finish:hover, #continue-buy:hover, #cep-btn:hover {
+    background-color: rgb(189, 155, 135);
+    box-shadow: inset 0 0 5px 5px rgb(172, 140, 121);
+    color: #fff;
+}
+
+#cep-inputs {
+    margin-top: -10px;
 }
 
 #cep-inputs input {
     border: 1px solid;
     height: 20px;
     width: 200px;
-    margin: 20px;
 }
 
 #cep-inputs button {

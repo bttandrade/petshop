@@ -1,12 +1,14 @@
 const continueBuy = document.getElementById('continue-buy');
 const finish = document.getElementById('finish');
 
-continueBuy.addEventListener('click', () => {
-  location.href='products.html';
+const buyButtons = document.querySelectorAll('.btn-buy');
+
+buyButtons.forEach(button => {
+  button.addEventListener('click', addToCart);
 });
 
-finish.addEventListener('click', () => {
-  alert('função ainda não adicionada');
+continueBuy.addEventListener('click', () => {
+  location.href='products.html';
 });
 
 function addToCart(event) {
@@ -28,18 +30,13 @@ function addToCart(event) {
   const existingProductIndex = cart.findIndex(item => item.name === productData.name);
 
   if (existingProductIndex !== -1) {
-      cart[existingProductIndex].quant++;
+    cart[existingProductIndex].quant++;
   } else {
-      cart.push(productData);
+    cart.push(productData);
   }
 
   localStorage.setItem('cart', JSON.stringify(cart));
 
-  window.location.href = './shopping-cart.html';
+  location.href = 'shopping-cart.html';
 }
 
-const buyButtons = document.querySelectorAll('.btn-buy');
-
-buyButtons.forEach(button => {
-  button.addEventListener('click', addToCart);
-});

@@ -17,20 +17,18 @@
                 <section id="pricing">
                     <h3 id="resume">Resumo do Pedido</h3>
                     <div id="resume-values">
-                        <h3>Valor: <div id="total-value">0</div></h3>
-                        <h3>Desconto:</h3>
-                        <h3>Valor finalizado:</h3>
+                        <h3>Valor da Compra <p id="total-value">0</p></h3>
+                        <h3>Desconto de Primeira Compra <p id="descount">10%</p></h3>
+                        <h3>Valor Final da Compra<p id="total-value-final">0</p></h3>
                     </div>
                     <div id="resume-btns">
                         <button id="finish">Finalizar Compra</button>
                         <button id="continue-buy">Continuar Comprando</button>
                     </div>
-                </section>
-                <section id="cep-shop">
-                    <label for="cepInput">Digite o CEP:</label>
+                    <label for="cepInput">Digite seu CEP</label>
                     <div id="cep-inputs">
                         <input type="text" id="cepInput">
-                        <button onclick="buscarEndereco()">Buscar</button>
+                        <button id="cep-btn" onclick="buscarEndereco()">Buscar</button>
                         <div id="endereco"></div>
                     </div>
                 </section>
@@ -40,6 +38,7 @@
 
     <script>
         const totalValue = document.getElementById('total-value');
+        const totalValueFinal = document.getElementById('total-value-final');
         let totalNumber = 0;
         
         function removeItem(index) {
@@ -85,26 +84,36 @@
 
                 const itemPrice = document.createElement('p');
                 itemPrice.classList.add('prod-price');
-                itemPrice.innerHTML = item.price;
+                let finalValue = `R$ ${item.price}`;
+                itemPrice.innerHTML = finalValue;
+                let price = item.price;
                 cartDescript.appendChild(itemPrice);
 
                 const addOrRemove = document.createElement('div');
                 addOrRemove.classList.add('prod-add-remove');
-                cartDescript.appendChild(addOrRemove);
+                //cartDescript.appendChild(addOrRemove);
 
                 const quantTxt = document.createElement('h4');
                 quantTxt.classList.add('quantidade');
                 quantTxt.innerHTML = `Unidades: ${item.quant}`;
 
-                totalNumber += parseFloat(itemPrice.innerText) * item.quant;
-                totalValue.innerHTML = totalNumber.toFixed(2).toString();
+                const addOrRemoveBox = document.createElement('div');
+                addOrRemoveBox.classList.add('add-remove-box');
+                cartDescript.appendChild(addOrRemoveBox);
+                addOrRemoveBox.appendChild(addOrRemove);
+                addOrRemoveBox.appendChild(quantTxt);
+
+                totalNumber += parseFloat(price) * item.quant;
+                totalValue.innerHTML = Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(totalNumber);
+                totalValueFinal.innerHTML = Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(totalNumber*0.9);
 
                 const addItem = document.createElement('div');
                 addItem.textContent = '+';
                 addItem.addEventListener("click", () => {
                     item.quant++;
-                    totalNumber += parseFloat(itemPrice.innerHTML);
-                    totalValue.innerHTML = totalNumber.toFixed(2).toString();
+                    totalNumber += parseFloat(price);
+                    totalValue.innerHTML = Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(totalNumber);
+                    totalValueFinal.innerHTML = Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(totalNumber*0.9);
                     quantTxt.innerHTML = `Unidades: ${item.quant}`;
                     localStorage.setItem('cart', JSON.stringify(cart));
                 });
@@ -114,8 +123,9 @@
                 removeItemButton.textContent = '-';
                 removeItemButton.addEventListener("click", () => {
                     item.quant--;
-                    totalNumber -= parseFloat(itemPrice.innerHTML);
-                    totalValue.innerHTML = totalNumber.toFixed(2).toString();
+                    totalNumber -= parseFloat(price);
+                    totalValue.innerHTML = Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(totalNumber);
+                    totalValueFinal.innerHTML = Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(totalNumber*0.9);
                     quantTxt.innerHTML = `Unidades: ${item.quant}`;
                     if (item.quant === 0) {
                         removeItem(index);
@@ -128,14 +138,18 @@
                 addOrRemove.appendChild(addItem);
                 addOrRemove.appendChild(removeItemButton);
 
-                cartDescript.appendChild(quantTxt);
-
                 cartList.appendChild(cartItem);
                 });
             } else {
                 cartList.innerHTML = '<p id="empty-cart">Carrinho vazio</p>';
             }
-        }  
+        }
+
+        finish.addEventListener('click', () => {
+            alert('Compra realizada com sucesso!\n' + 
+            `Total a ser pago: ${totalValueFinal.innerText}`);
+        });
+
         window.onload = displayCart;
     </script>
     <script>
